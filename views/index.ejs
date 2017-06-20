@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form action="/sentences" method="post">
+            <!--	action determins which route will be triggered-->
+            <input type="text" name="sentences" placeholder="sentences">
+            <!--	assigning the name we can then get the value from req.body using body parser-->
+            <button type="submit">Add Sentence</button>
+        </form>
+        <ul>
+            <%for (x in array){%>
+                <li>
+                    <%=array[x].sentences%>
+                        <a href="/sentences/<%=array[x].sentences%>/update">Update Sentence</a>
+                        <a href="/sentences/<%=array[x].sentences%>/translate">Add Translation</a>
+                        <form action="/sentences/<%=array[x].sentences%>/delete" method="post">
+                            <input type="submit" value="Delete Sentence"><br>
+                        </form>
+                        <%for (var y in array[x]['translation']){%>
+                            <%=array[x]['translation'][y].language%>
+                                <%=array[x]['translation'][y].translation%>
+                                    <a href="/sentences/<%=array[x].sentences%>/update/<%=array[x]['translation'][y].language%>">Update Translation</a>
+                                    <form action="/sentences/<%=array[x].sentences%>/delete/<%=array[x]['translation'][y].language%>" method="post">
+                                        <input type="submit" value="Delete Translation">
+                                    </form>
+                </li>
+                <%}}%>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

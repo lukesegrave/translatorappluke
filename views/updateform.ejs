@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form action="/sentences/<%=sentence%>/update" method="post">
+            <!--	action determins which route will be triggered-->
+            <input type="text" name="newSentence" placeholder="newSentence">
+            <!--	assigning the name we can then get the value from req.body using body parser-->
+            <button type="submit">Submit New Sentence</button>
+        </form>
+        <ul>
+            <li>
+                <%=sentence%>
+            </li>
+        </ul>
+    </div>
+
+
+
+</body>
+
+</html>

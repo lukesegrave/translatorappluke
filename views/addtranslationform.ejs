@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form action="/sentences/<%=sentence%>/translate" method="post">
+            <!--	action determins which route will be triggered-->
+            <input type="text" name="lang" placeholder="lang">
+            <input type="text" name="translation" placeholder="translation">
+            <!--	assigning the name we can then get the value from req.body using body parser-->
+            <button type="submit">Submit Translation</button>
+        </form>
+        <ul>
+            <li>
+                <%=sentence%>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
