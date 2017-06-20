@@ -1,8 +1,9 @@
 var express = require('express'),
     //requiring express
     app = express(),
-    //assigning express executed as a function to the variabl app
-    bodyParser = require('body-parser');
+    port = process.env.PORT || 3000;
+//assigning express executed as a function to the variabl app
+bodyParser = require('body-parser');
 //requiring body-parserz
 //body parser set-up (always the same)
 app.use(bodyParser.urlencoded({
@@ -162,6 +163,6 @@ app.post('/sentences/:sentence/update/:lang', function (req, res) {
 
 
 //running the server in port 3001
-app.listen(3001, function () {
-    console.log("Express server running on port 3001")
+app.listen(port, function () {
+    console.log("Express server running on port ", port)
 })
