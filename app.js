@@ -1,11 +1,13 @@
+//telling it to use mongoose, express & body parser)
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1/translator')
+translations = require('./models/schema.js')
+
 var express = require('express'),
-    //requiring express
     app = express(),
     port = process.env.PORT || 3000;
-//assigning express executed as a function to the variabl app
 bodyParser = require('body-parser');
-//requiring body-parserz
-//body parser set-up (always the same)
 app.use(bodyParser.urlencoded({
     extended: true
 }))
@@ -22,15 +24,19 @@ app.get('/', (req, res) => {
 //Create a new sentence
 app.post('/sentences', function (req, res) {
     var sentences = req.body.sentences
-    var obj = {
-        sentences: sentences,
-        translation: []
-    }
-    array.push(obj)
+
+    translations.create({
+        sentences: sentences
+    }, (err, done) => {
+        if (err) return console.log('error', err)
+        console.log('actually worked', done)
+    })
+
     res.render('index.ejs', {
-        array
+        translations
     })
 })
+
 
 //Show Updated Phrase form
 app.get('/sentences/:sentence/update', function (req, res) {
