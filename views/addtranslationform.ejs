@@ -8,7 +8,7 @@
 
 <body>
     <div>
-        <form action="/sentences/<%=sentence%>/translate" method="post">
+        <form action="/sentences/<%=done._id%>/translate" method="post">
             <!--	action determins which route will be triggered-->
             <input type="text" name="lang" placeholder="lang">
             <input type="text" name="translation" placeholder="translation">
@@ -17,7 +17,7 @@
         </form>
         <ul>
             <li>
-                <%=sentence%>
+                <%=done.sentences%>
             </li>
         </ul>
     </div>

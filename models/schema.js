@@ -6,6 +6,6 @@ var translationSchema = new Schema({
     translation: []
 })
 
-var translations = mongoose.model('translations', translationSchema)
+var array = mongoose.model('array', translationSchema)
 
-module.exports = translations
+module.exports = array

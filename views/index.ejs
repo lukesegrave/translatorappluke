@@ -15,23 +15,25 @@
             <button type="submit">Add Sentence</button>
         </form>
         <ul>
-            <%for (x in array){%>
-                <li>
-                    <%=array[x].sentences%>
-                        <a href="/sentences/<%=array[x].sentences%>/update">Update Sentence</a>
-                        <a href="/sentences/<%=array[x].sentences%>/translate">Add Translation</a>
-                        <form action="/sentences/<%=array[x].sentences%>/delete" method="post">
-                            <input type="submit" value="Delete Sentence"><br>
-                        </form>
-                        <%for (var y in array[x]['translation']){%>
-                            <%=array[x]['translation'][y].language%>
-                                <%=array[x]['translation'][y].translation%>
-                                    <a href="/sentences/<%=array[x].sentences%>/update/<%=array[x]['translation'][y].language%>">Update Translation</a>
-                                    <form action="/sentences/<%=array[x].sentences%>/delete/<%=array[x]['translation'][y].language%>" method="post">
-                                        <input type="submit" value="Delete Translation">
-                                    </form>
-                </li>
-                <%}}%>
+            <%if (done){%>
+                <%for (x in done){%>
+                    <li>
+                        <%=done[x].sentences%>
+                            <a href="/sentences/<%=done[x]._id%>/update">Update Sentence</a>
+                            <a href="/sentences/<%=done[x]._id%>/translate">Add Translation</a>
+                            <form action="/sentences/<%=done[x]._id%>/delete" method="post">
+                                <input type="submit" value="Delete Sentence"></form><br>
+                            <%for (y in done[x].translation){%>
+                                <%if (done[x].translation[y].language){%>
+                                    <%=done[x].translation[y].language%>
+                                        <%=done[x].translation[y].translations%>
+                                            <a href="/sentences/<%=done[x]._id%>/update/<%=done[x].translation[y].language%>">Update Translation</a>
+                                            <form action="/sentences/<%=done[x]._id%>/delete/<%=done[x].translation[y].language%>" method="post">
+                                                <input type="submit" value="Delete Translation"></form>
+                                            <%}%>
+                                                <%}%>
+                                                    <%}%>
+                                                        <%}%>
         </ul>
 
     </div>

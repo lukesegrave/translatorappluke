@@ -8,7 +8,7 @@
 
 <body>
     <div>
-        <form action="/sentences/<%=sentence%>/update" method="post">
+        <form action="/sentences/<%=done._id%>/update" method="post">
             <!--	action determins which route will be triggered-->
             <input type="text" name="newSentence" placeholder="newSentence">
             <!--	assigning the name we can then get the value from req.body using body parser-->
@@ -16,7 +16,7 @@
         </form>
         <ul>
             <li>
-                <%=sentence%>
+                <%=done.sentences%>
             </li>
         </ul>
     </div>
